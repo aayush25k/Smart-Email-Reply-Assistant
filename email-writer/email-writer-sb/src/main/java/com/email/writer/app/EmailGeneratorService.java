@@ -20,6 +20,7 @@ public class EmailGeneratorService {
     private String geminiApiKey;
 
     public EmailGeneratorService(WebClient.Builder webClientBuilder) {
+        // WebClient will now have base URL set from config
         this.webClient = webClientBuilder.build();
     }
 
@@ -27,19 +28,19 @@ public class EmailGeneratorService {
         String prompt = buildPrompt(emailRequest);
 
         Map<String, Object> requestBody = Map.of(
-                "contents", new Object[] {
-                        Map.of("parts", new Object[] {
+                "contents", new Object[]{
+                        Map.of("parts", new Object[]{
                                 Map.of("text", prompt)
                         })
                 }
         );
 
         try {
+            // Full URL to Gemini endpoint
+            String url = geminiApiUrl + "/v1beta/models/gemini-1.5-flash:generateContent?key=" + geminiApiKey;
+
             String response = webClient.post()
-                    .uri(uriBuilder -> uriBuilder
-                            .path("/v1beta/models/gemini-pro:generateContent")
-                            .queryParam("key", geminiApiKey)
-                            .build())
+                    .uri(url)
                     .header("Content-Type", "application/json")
                     .bodyValue(requestBody)
                     .retrieve()
@@ -54,7 +55,6 @@ public class EmailGeneratorService {
             return "Error calling external API: " + e.getMessage();
         }
     }
-
 
     private String extractResponseContent(String response) {
         try {
@@ -74,9 +74,9 @@ public class EmailGeneratorService {
 
     private String buildPrompt(EmailRequest emailRequest) {
         StringBuilder prompt = new StringBuilder();
-        prompt.append("Generate a professional email reply for the following email content. Please don't generate a subject line ");
+        prompt.append("Generate a professional email reply for the following email content. Please don't generate a subject line. ");
         if (emailRequest.getTone() != null && !emailRequest.getTone().isEmpty()) {
-            prompt.append("Use a ").append(emailRequest.getTone()).append(" tone.");
+            prompt.append("Use a ").append(emailRequest.getTone()).append(" tone. ");
         }
         prompt.append("\nOriginal email: \n").append(emailRequest.getEmailContent());
         return prompt.toString();
