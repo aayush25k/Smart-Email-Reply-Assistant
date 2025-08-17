@@ -1,5 +1,4 @@
 package com.email.writer.app;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,6 +26,8 @@ public class EmailGeneratorService {
     public String generateEmailReply(EmailRequest emailRequest) {
         String prompt = buildPrompt(emailRequest);
 
+
+        // Converting String --> Json
         Map<String, Object> requestBody = Map.of(
                 "contents", new Object[]{
                         Map.of("parts", new Object[]{
@@ -34,6 +35,17 @@ public class EmailGeneratorService {
                         })
                 }
         );
+
+// gemini api expects json in this structure;
+//        {
+//            "contents": [
+//            {
+//                "parts": [
+//                { "text": "your prompt here" }
+//      ]
+//            }
+//  ]
+//        }
 
         try {
             // Full URL to Gemini endpoint
@@ -43,12 +55,11 @@ public class EmailGeneratorService {
                     .uri(url)
                     .header("Content-Type", "application/json")
                     .bodyValue(requestBody)
-                    .retrieve()
+                    .retrieve()    // triggers request and wait for response
                     .bodyToMono(String.class)
                     .block();
 
             System.out.println("Full API response: " + response);
-
             return extractResponseContent(response);
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,6 +67,8 @@ public class EmailGeneratorService {
         }
     }
 
+
+    // Converting Json --> String
     private String extractResponseContent(String response) {
         try {
             ObjectMapper mapper = new ObjectMapper();
