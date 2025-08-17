@@ -14,7 +14,7 @@ function App() {
     setLoading(true);
     setError('');
     try {
-      const response = await axios.post("http://localhost:8080/api/email/generate", {
+      const response = await axios.post("https://smart-email-reply-assistant.onrender.com/api/email/generate", {
        emailContent,
        tone 
       });
@@ -26,7 +26,7 @@ function App() {
       setLoading(false);
     }
   };
-
+// http://localhost:8080/api/email/generate
   return (
     <Container maxWidth="md" sx={{py:4}}>
       <Typography variant='h3' component="h1" gutterBottom>
