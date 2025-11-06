@@ -1,0 +1,309 @@
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.app-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.main-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header Section */
+.header-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.header-content {
+  margin-bottom: 2rem;
+}
+
+.header-icon {
+  font-size: 4rem !important;
+  color: #fff;
+  margin-bottom: 1rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.main-title {
+  color: #fff;
+  font-weight: 700 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300 !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Extension Card */
+.extension-card {
+  max-width: 500px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.extension-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.extension-icon {
+  font-size: 2.5rem !important;
+  color: #667eea;
+}
+
+.extension-title {
+  font-weight: 600 !important;
+  color: #333;
+}
+
+.extension-description {
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+.download-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  border-radius: 12px !important;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease !important;
+}
+
+.download-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4) !important;
+}
+
+.install-instructions {
+  color: #888;
+  font-size: 0.75rem;
+  display: block;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Main Card */
+.main-card {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 24px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+  padding: 2rem;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+  margin-bottom: 2rem;
+}
+
+.input-section {
+  margin-bottom: 2rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-icon {
+  font-size: 2rem !important;
+  color: #667eea;
+}
+
+.success-icon {
+  color: #10b981 !important;
+}
+
+.section-title {
+  font-weight: 600 !important;
+  color: #333;
+}
+
+.email-input textarea {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.tone-select {
+  border-radius: 12px;
+}
+
+.generate-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  padding: 1rem !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  border-radius: 12px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
+}
+
+.generate-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4) !important;
+}
+
+.generate-button:disabled {
+  opacity: 0.6;
+}
+
+/* Result Section */
+.result-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid #e5e7eb;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.result-input textarea {
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: #f9fafb;
+}
+
+.copy-button {
+  padding: 0.75rem !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  border-radius: 12px !important;
+  border: 2px solid #667eea !important;
+  color: #667eea !important;
+  transition: all 0.3s ease !important;
+}
+
+.copy-button:hover {
+  background-color: #667eea !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  animation: fadeIn 1s ease-out 0.6s both;
+}
+
+.footer-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 1rem 0;
+  }
+
+  .main-title {
+    font-size: 2rem !important;
+  }
+
+  .subtitle {
+    font-size: 1rem !important;
+  }
+
+  .main-card {
+    padding: 1.5rem;
+    border-radius: 16px !important;
+  }
+
+  .header-icon {
+    font-size: 3rem !important;
+  }
+
+  .extension-card {
+    margin: 0 1rem;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
